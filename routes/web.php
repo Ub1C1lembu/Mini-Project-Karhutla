@@ -25,7 +25,8 @@ Route::middleware(['auth', 'role:pelapor'])->group(function () {
 
 Route::middleware(['auth', 'role:relawan_pemantau,koordinator'])->group(function () {
     Route::get('/laporan', [ReportController::class, 'index'])->name('report.index');
-    Route::get('/laporan/{report}', [ReportController::class, 'show'])->name('report.show'); // Tambahkan baris ini
+    Route::get('/laporan/{report}', [ReportController::class, 'show'])->name('report.show');
+    Route::patch('/laporan/{report}/status', [ReportController::class, 'updateStatus'])->name('report.updateStatus');
 });
 
 require __DIR__ . '/auth.php';

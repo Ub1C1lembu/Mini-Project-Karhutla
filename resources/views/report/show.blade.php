@@ -10,11 +10,32 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
-                    <div class="flex justify-between items-center mb-6 pb-4 border-b border-gray-200">
+                    <div
+                        class="flex flex-col sm:flex-row justify-between items-center mb-6 pb-4 border-b border-gray-200 gap-4">
                         <h3 class="text-lg font-bold">Informasi Kejadian</h3>
-                        <span class="px-4 py-1 bg-yellow-200 text-yellow-800 rounded-full font-bold text-sm">
-                            {{ strtoupper($report->status) }}
-                        </span>
+
+                        @if(session('status'))
+                            <span class="text-green-600 font-semibold text-sm">{{ session('status') }}</span>
+                        @endif
+
+                        <form action="{{ route('report.updateStatus', $report->id) }}" method="POST"
+                            class="flex items-center gap-2">
+                            @csrf
+                            @method('PATCH')
+                            <select name="status"
+                                class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm text-sm font-bold">
+                                <option value="pending" {{ $report->status === 'pending' ? 'selected' : '' }}>PENDING
+                                </option>
+                                <option value="diproses" {{ $report->status === 'diproses' ? 'selected' : '' }}>DIPROSES
+                                </option>
+                                <option value="selesai" {{ $report->status === 'selesai' ? 'selected' : '' }}>SELESAI
+                                </option>
+                            </select>
+                            <button type="submit"
+                                class="px-4 py-2 bg-indigo-600 text-white text-sm rounded hover:bg-indigo-700 transition">
+                                Perbarui
+                            </button>
+                        </form>
                     </div>
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">

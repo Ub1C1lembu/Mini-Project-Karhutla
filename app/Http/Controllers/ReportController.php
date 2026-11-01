@@ -51,4 +51,17 @@ class ReportController extends Controller
 
         return view('report.show', compact('report'));
     }
+
+    public function updateStatus(Request $request, Report $report)
+    {
+        $request->validate([
+            'status' => 'required|in:pending,diproses,selesai',
+        ]);
+
+        $report->update([
+            'status' => $request->status
+        ]);
+
+        return redirect()->back()->with('status', 'Status laporan berhasil diperbarui!');
+    }
 }
