@@ -1,6 +1,4 @@
-# Aplikasi Pelaporan Kebakaran Hutan dan Lahan (Karhutla)
-
-Sistem Informasi berbasis web untuk pelaporan dan manajemen penanganan kebakaran hutan dan lahan menggunakan Laravel dan Tailwind CSS. Dilengkapi dengan *Role-Based Access Control* (RBAC) untuk membedakan hak akses antara Pelapor, Relawan Pemantau, dan Koordinator.
+# Pelaporan Kebakaran Hutan dan Lahan (Karhutla)
 
 ---
 
