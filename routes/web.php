@@ -23,4 +23,8 @@ Route::middleware(['auth', 'role:pelapor'])->group(function () {
     Route::post('/lapor', [ReportController::class, 'store'])->name('report.store');
 });
 
+Route::middleware(['auth', 'role:relawan_pemantau,koordinator'])->group(function () {
+    Route::get('/laporan', [ReportController::class, 'index'])->name('report.index');
+});
+
 require __DIR__ . '/auth.php';

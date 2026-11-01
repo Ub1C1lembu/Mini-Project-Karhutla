@@ -35,6 +35,13 @@ class ReportController extends Controller
             'longitude' => '106.816666',
         ]);
 
+
         return redirect()->route('dashboard')->with('status', 'Laporan berhasil dikirim!');
+    }
+
+    public function index()
+    {
+        $reports = Report::with(['area', 'user'])->latest()->get();
+        return view('report.index', compact('reports'));
     }
 }
