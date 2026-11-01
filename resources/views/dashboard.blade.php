@@ -12,10 +12,14 @@
                     <p class="mb-4">{{ __("You're logged in!") }}</p>
 
                     @if(Auth::user()->role === 'pelapor')
-                        <div class="mt-4">
+                        <div class="mt-4 flex gap-3">
                             <a href="{{ route('report.create') }}"
                                 class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 transition ease-in-out duration-150">
                                 + Buat Laporan Baru
+                            </a>
+                            <a href="{{ route('report.history') }}"
+                                class="inline-flex items-center px-4 py-2 bg-gray-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 transition ease-in-out duration-150">
+                                Riwayat Saya
                             </a>
                         </div>
                     @endif

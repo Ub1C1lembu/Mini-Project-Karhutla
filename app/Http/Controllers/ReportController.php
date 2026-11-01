@@ -64,4 +64,10 @@ class ReportController extends Controller
 
         return redirect()->back()->with('status', 'Status laporan berhasil diperbarui!');
     }
+
+    public function history()
+    {
+        $reports = Report::where('user_id', auth()->id())->latest()->get();
+        return view('report.history', compact('reports'));
+    }
 }

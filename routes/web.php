@@ -21,6 +21,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'role:pelapor'])->group(function () {
     Route::get('/lapor', [ReportController::class, 'create'])->name('report.create');
     Route::post('/lapor', [ReportController::class, 'store'])->name('report.store');
+    Route::get('/riwayat-laporan', [ReportController::class, 'history'])->name('report.history');
 });
 
 Route::middleware(['auth', 'role:relawan_pemantau,koordinator'])->group(function () {
