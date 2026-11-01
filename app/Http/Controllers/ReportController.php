@@ -44,4 +44,11 @@ class ReportController extends Controller
         $reports = Report::with(['area', 'user'])->latest()->get();
         return view('report.index', compact('reports'));
     }
+
+    public function show(Report $report)
+    {
+        $report->load(['area', 'user']);
+
+        return view('report.show', compact('report'));
+    }
 }

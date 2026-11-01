@@ -18,6 +18,7 @@
                                 <th class="border-b py-3 px-4">Wilayah</th>
                                 <th class="border-b py-3 px-4">Keterangan</th>
                                 <th class="border-b py-3 px-4">Status</th>
+                                <th class="border-b py-3 px-4 text-center">Aksi</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -28,7 +29,14 @@
                                     <td class="border-b py-3 px-4">{{ $report->area->name ?? '-' }}</td>
                                     <td class="border-b py-3 px-4">{{ Str::limit($report->description, 50) }}</td>
                                     <td class="border-b py-3 px-4 font-bold text-yellow-600">
-                                        {{ strtoupper($report->status) }}</td>
+                                        {{ strtoupper($report->status) }}
+                                    </td>
+                                    <td class="border-b py-3 px-4 text-center">
+                                        <a href="{{ route('report.show', $report->id) }}"
+                                            class="text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-3 rounded">
+                                            Detail
+                                        </a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
