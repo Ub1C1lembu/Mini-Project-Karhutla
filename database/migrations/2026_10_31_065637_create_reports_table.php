@@ -12,14 +12,13 @@ return new class extends Migration {
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('area_id')->constrained('areas')->onDelete('cascade');
-            $table->decimal('latitude', 10, 8);
-            $table->decimal('longitude', 11, 8);
-            $table->dateTime('incident_time');
-            $table->text('condition_description');
-            $table->string('evidence_file');
-            $table->enum('status', ['baru', 'diperiksa', 'butuh_perhatian', 'selesai'])->default('baru');
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('area_id')->constrained()->cascadeOnDelete();
+            $table->text('description'); // Tambahkan kolom ini
+            $table->string('photo_path'); // Pastikan kolom ini juga ada
+            $table->string('status')->default('pending');
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
             $table->timestamps();
         });
     }
